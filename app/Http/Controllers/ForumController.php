@@ -97,10 +97,11 @@ class ForumController extends Controller
             $filename = time().'.'.$file->getClientOriginalExtension();
             $location = public_path('/images');
             $file->move($location, $filename);
-            $forums->image = $filename;
 
             $oldImage = $forums->image;
             \Storage::delete($oldImage); 
+            
+            $forums->image = $filename;
         }
 
         $forums->save();

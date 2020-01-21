@@ -17,7 +17,7 @@
                             <textarea type="text" name="description" class="form-control" placeholder="Description..."></textarea>
                         </div>
                         <div class="form-group">
-                            <select name="tags" class="form-control">
+                            <select name="tags[]" multiple="multiple" class="form-control tags">
                                 @foreach($tags as $tag)
                                     <option value="{{$tag->id}}">{{$tag->name}}</option>
                                 @endforeach
@@ -33,4 +33,13 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+    $(".tags").select2({
+        placeholder: "Tags..",
+        maximumSelectionLength: 2
+    });
+</script>
 @endsection

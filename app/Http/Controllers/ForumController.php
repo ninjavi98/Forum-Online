@@ -77,8 +77,9 @@ class ForumController extends Controller
      */
     public function edit($id)
     {
+        $tags = Tag::all();
         $forum = Forum::find($id);
-        return view('forum.edit', compact('forum'));
+        return view('forum.edit', compact('forum','tags'));
     }
 
     /**
@@ -108,7 +109,7 @@ class ForumController extends Controller
         }
 
         $forums->save();
-
+        $forums->tags()->sync($request->tags);
         return back();
 
     }

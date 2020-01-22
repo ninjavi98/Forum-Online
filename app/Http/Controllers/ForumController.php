@@ -9,6 +9,10 @@ use Auth;
 
 class ForumController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +30,9 @@ class ForumController extends Controller
      */
     public function create()
     {
+        $forums = forum::orderBy('id','desc')->paginate(1);
         $tags = Tag::all();
-        return view('forum.create', compact('tags'));
+        return view('forum.create', compact('tags','forums'));
     }
 
     /**

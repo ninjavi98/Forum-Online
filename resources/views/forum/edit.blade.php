@@ -18,6 +18,13 @@
                             <textarea type="text" name="description" class="form-control" placeholder="Description...">{{$forum->description}}</textarea>
                         </div>
                         <div class="form-group">
+                            <select name="tags[]" multiple="multiple" class="form-control tags">
+                                @foreach($tags as $tag)
+                                    <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>                        
+                        <div class="form-group">
                             <input type="file" name="image" class="form-control">
                         </div>
                         <div class="form-group">
@@ -32,4 +39,10 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+    $(".tags").select2().val({!! json_encode($forum->tags()->allRelatedIds() ) !!}).trigger('change');
+</script>
 @endsection

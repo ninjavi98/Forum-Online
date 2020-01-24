@@ -46,7 +46,7 @@ class ForumController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-   
+        
         ]);
 
         $forums = New Forum;
@@ -64,8 +64,7 @@ class ForumController extends Controller
 
         $forums->save();
         $forums->tags()->sync($request->tags);
-
-        return back();
+        return back()->withInfo('Selamat, pertanyaan berhasil dikirim!!');
 
     }
 
@@ -105,9 +104,9 @@ class ForumController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-         
+            
         ]);
-        
+
         $forums = Forum::find($id);
         $forums->user_id = Auth::user()->id;
         $forums->title = $request->title;

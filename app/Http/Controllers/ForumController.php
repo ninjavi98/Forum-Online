@@ -46,8 +46,7 @@ class ForumController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'tags' => 'required',
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:1024',
+   
         ]);
 
         $forums = New Forum;
@@ -106,8 +105,7 @@ class ForumController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'tags' => 'required',
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:1024',
+         
         ]);
         
         $forums = Forum::find($id);

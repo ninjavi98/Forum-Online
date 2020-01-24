@@ -28,13 +28,19 @@
                 </tr>
               </thead>
               <tbody style="background: #f9f9f9;"> 
+              @foreach($forums as $forum)
                 <tr> 
                 <td width="453">
                 <div class="forum_title">
-                <h4> <a href="#">What is Lorem Ipsum?</a></h4>
-                <p>  Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p> 
-                <a href="#" class="badge badge-success tag_label">#php</a>
+                <h4> <a href="#">{{ str_limit($forum->title, 30)}}</a></h4>
+                <p>{{ str_limit($forum->description, 50)}}</p> 
+                @foreach($forum->tags as $tag)
+                <a href="#" class="badge badge-success tag_label">#{{$tag->name}}</a>
+                @endforeach
+                @if(empty($forum->image))
+                @else
                  <div class="badge badge-success tag_label_image"><i class="fa fa-image"></i></div> 
+                @endif
                 </div> 
               </td>
                <td  style="text-align: center"><small> 2</small></td>
@@ -42,30 +48,11 @@
               <td>
             <div class="forum_by">
             <small style="margin-bottom: 0; color: #666">2 min ago</small>
-             <small>by <a href="#">telukcoding</a></small>
-                
+             <small>by <a href="#">{{$forum->user['name']}}</a></small>   
             </div>
             </td>
             </tr> 
-
-             <tr> 
-                <td width="453">
-                <div class="forum_title">
-                <h4> <a href="#">Where does it come from?</a></h4>
-                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin..</p> 
-                <a href="#" class="badge badge-success tag_label">#php</a>
-                 <div class="badge badge-success tag_label_image"><i class="fa fa-image"></i></div> 
-                </div> 
-              </td>
-               <td  style="text-align: center"><small> 2</small></td>
-              <td  style="text-align: center"><small> 2</small></td>
-              <td>
-            <div class="forum_by">
-            <small style="margin-bottom: 0; color: #666">2 min ago</small>
-             <small>by <a href="#">telukcoding</a></small> 
-            </div>
-            </td>
-            </tr>  
+            @endforeach
               </tbody>
             </table>
                  <!-- pagination -->

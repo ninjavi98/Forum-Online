@@ -79,11 +79,6 @@ $(".tags").select2({
     placeholder: "Select tags",
     maximumSelectionLength: 2
 });
-
- CKEDITOR.replace( 'description', {
-  extraPlugins: 'codesnippet',
-  codeSnippet_theme: 'monokai_sublime'
-} );
 </script>
 
 @endsection

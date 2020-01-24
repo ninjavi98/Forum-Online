@@ -92,9 +92,7 @@
 
     <!-- Script -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-
+    <script src="{{ asset('select2/dist/js/select2.min.js')}}"></script>
     <script src="{{ asset('tinymce/jquery.tinymce.min.js')}}"></script>
     <script src="{{ asset('tinymce/tinymce.min.js')}}"></script>
     <script>tinymce.init({ selector:'textarea#tc_input.form-control' });</script>

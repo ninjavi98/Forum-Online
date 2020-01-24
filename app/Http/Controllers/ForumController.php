@@ -20,7 +20,8 @@ class ForumController extends Controller
      */
     public function index()
     {
-        return view('forum.index');
+        $forums = Forum::All();
+        return view('forum.index', compact('forums'));
     }
 
     /**

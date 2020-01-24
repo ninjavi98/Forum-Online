@@ -43,6 +43,13 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'tags' => 'required',
+            'image' => 'image|mimes:jpg,jpeg,png,gif|max:1024',
+        ]);
+
         $forums = New Forum;
         $forums->user_id = Auth::user()->id;
         $forums->title = $request->title;
@@ -96,6 +103,13 @@ class ForumController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'tags' => 'required',
+            'image' => 'image|mimes:jpg,jpeg,png,gif|max:1024',
+        ]);
+        
         $forums = Forum::find($id);
         $forums->user_id = Auth::user()->id;
         $forums->title = $request->title;

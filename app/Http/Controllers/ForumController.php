@@ -126,7 +126,8 @@ class ForumController extends Controller
 
         $forums->save();
         $forums->tags()->sync($request->tags);
-        return back();
+        return back()->withInfo('Selamat, pertanyaan berhasil update!!');
+
 
     }
 

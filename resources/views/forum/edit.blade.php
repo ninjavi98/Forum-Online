@@ -15,7 +15,7 @@
                             <input type="text" name="title" class="form-control" value="{{$forum->title}}">
                         </div>
                         <div class="form-group">
-                            <textarea type="text" name="description" class="form-control" placeholder="Description...">{{$forum->description}}</textarea>
+                            <textarea type="text" id="tc_input" name="description" class="form-control" placeholder="Description...">{{$forum->description}}</textarea>
                         </div>
                         <div class="form-group">
                             <select name="tags[]" multiple="multiple" class="form-control tags">

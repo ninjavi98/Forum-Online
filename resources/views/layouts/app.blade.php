@@ -85,6 +85,10 @@
         </nav>
 
         <main class="py-4"> 
+            <div class="container">
+            @include('layouts.info')
+            </div>
+
             @yield('content')
  
         </main>

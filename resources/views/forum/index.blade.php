@@ -32,7 +32,7 @@
                 <tr> 
                 <td width="453">
                 <div class="forum_title">
-                <h4> <a href="#">{{ str_limit($forum->title, 30)}}</a></h4>
+                <h4> <a href="{{route('forum.show', $forum->id)}}">{{ str_limit($forum->title, 30)}}</a></h4>
                 <p>{{ str_limit($forum->description, 50)}}</p> 
                 @foreach($forum->tags as $tag)
                 <a href="#" class="badge badge-success tag_label">#{{$tag->name}}</a>

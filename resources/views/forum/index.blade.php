@@ -48,7 +48,7 @@
               <td>
             <div class="forum_by">
             <small style="margin-bottom: 0; color: #666">2 min ago</small>
-             <small>by <a href="#">{{$forum->user['name']}}</a></small>   
+             <small>by <a href="#">{{$forum->user->name}}</a></small>   
             </div>
             </td>
             </tr> 

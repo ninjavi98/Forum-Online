@@ -20,7 +20,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        $forums = Forum::All();
+        $forums = Forum::paginate(3);
         return view('forum.index', compact('forums'));
     }
 

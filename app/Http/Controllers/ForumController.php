@@ -75,9 +75,11 @@ class ForumController extends Controller
      * @param  \App\forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $forums = Forum::find($id);
+        $forums = Forum::where('id', $slug)
+                        ->orwhere('slug', $slug)
+                        ->firstOrFail();
         return view('forum.show', compact('forums'));
     }
 

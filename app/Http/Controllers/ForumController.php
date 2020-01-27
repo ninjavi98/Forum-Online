@@ -75,9 +75,10 @@ class ForumController extends Controller
      * @param  \App\forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function show(forum $forum)
+    public function show($id)
     {
-        //
+        $forums = Forum::find($id);
+        return view('forum.show', compact('forums'));
     }
 
     /**

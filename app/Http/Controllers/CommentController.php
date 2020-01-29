@@ -24,4 +24,21 @@ class CommentController extends Controller
 
         return back()->withInfo('Komentar berhasil dikirim!');
     }
+
+
+    public function replyComment(Request $request, Comment $comment)
+    {
+
+        $request->validate([
+            'content' => 'required|min:5'
+        ]);
+
+        $reply = New Comment;
+        $reply->user_id = Auth::user()->id;
+        $reply->content = $request->content;
+
+        $comment->comments()->save($reply);
+
+        return back()->withInfo('Komentar balasan berhasil dikirim!');
+    }
 }

@@ -78,11 +78,8 @@
 
             <br>
             @forelse($forums->comments as $comment)
-
-
-
             <div class="card">
-            <div class="card-header" style=" background-color: #2ab27b; color: #fff; border-top-right-radius: 0px; border-top-left-radius: 0px;"><i class="fa fa-clock-o" style="color: #eee"></i> <small style="color: #eee">2 min ago</small></div>
+            <div class="card-header" style=" background-color: #2ab27b; color: #fff; border-top-right-radius: 0px; border-top-left-radius: 0px;"><i class="fa fa-clock-o" style="color: #eee"></i> <small style="color: #eee">{{$comment->created_at->diffForHumans()}}</small></div>
             <div class="card-body" style="background: #f9f9f9; "> 
               <div class="row">
                 <div class="col-md-3" id="img_comment">
@@ -111,27 +108,33 @@
           <div id="{{$comment->id}}-collapse1reply" class="card-collapse collapse">
             <div class="card-body">
               <!-- forelse reply-->
+              @forelse($comment->comments as $reply)
             <div class="card">
-                <div class="card-header" style="background-color: #2ab27b; color: #fff; border-top-right-radius: 0px; border-top-left-radius: 0px;"><i class="fa fa-clock-o" style="color: #eee"></i> <small style="color: #eee">2 min ago </small></div>
+                <div class="card-header" style="background-color: #2ab27b; color: #fff; border-top-right-radius: 0px; border-top-left-radius: 0px;"><i class="fa fa-clock-o" style="color: #eee"></i> <small style="color: #eee">{{$reply->created_at->diffForHumans()}}</small></div>
                 <div class="card-body" style="background: #f9f9f9;"> 
                   <div class="row">
                 <div class="col-md-8">
-                komentar balasan disini.
+                {{$reply->content}}
                 </div>
                 <div class="col-md-3" id="img_comment_reply">
                   <img src="{{asset('images/profile.png')}}" width="100%">
                   <br>
                   <div class="comment_user">
-                  <b>telukcoding</b>
+                  <b>{{$reply->user->name}}</b>
                   </div>
                 </div>
               </div>
               </div>
-              </div>
+              </div> <br>
+              @empty
+
+              <p>No Comment</p>
+
+            @endforelse
 
             </div>
-                <div class="panel-body" style="    border-top: 1px solid #eee;">
-                  <form action="#" method="post" style="    padding: 0 16px;">
+                <div class="panel-body" style="border-top: 1px solid #eee;">
+                  <form action="{{route('replyComment', $comment->id)}}" method="post" style="    padding: 0 16px;">
                 {{csrf_field()}}
                 <div class="form-group">
                 <input type="text" name="content" class="form-control" id="input_reply" placeholder="Reply here..">        
@@ -160,6 +163,14 @@
               <div class="open_comment">
                   <div class="h1"><h4>Add a Comment</h4></div>
               </div>
+              @if (Auth::guest())
+
+              <div class="comment-show" style="padding: 60px;">
+                <a href="{{route('login')}}" style="color: #d40c0c;"> <i class="fa fa-sign-in"></i> Login </a>to comment.</p>
+              </div>
+
+              @else
+              
               <div class="comment-show">
                 <form action="{{route('addComment', $forums->id)}}" method="post">
                   {{csrf_field()}}
@@ -172,6 +183,9 @@
                 </div>
               </form>
               </div>
+
+              
+              @endif
             </div>
               </div>
             </div>

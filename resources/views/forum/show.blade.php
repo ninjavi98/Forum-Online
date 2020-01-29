@@ -85,7 +85,7 @@
                   <div class="h1"><h4>Add a Comment</h4></div>
               </div>
               <div class="comment-show">
-                <form action="#" method="post">
+                <form action="{{route('addComment', $forums->id)}}" method="post">
                   {{csrf_field()}}
                 <div class="form-group">
                   <input type="text" name="content" id="Your-Answer" placeholder="Your Comment:" required="required">

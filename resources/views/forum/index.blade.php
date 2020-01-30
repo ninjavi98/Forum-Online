@@ -43,8 +43,8 @@
                 @endif
                 </div> 
               </td>
-               <td  style="text-align: center"><small> 2</small></td>
-              <td  style="text-align: center"><small> 2</small></td>
+               <td  style="text-align: center"><small> {{$forum->comments->count()}}</small></td>
+              <td  style="text-align: center"><small> {{views($forum)->count()}}</small></td>
               <td>
             <div class="forum_by">
             <small style="margin-bottom: 0; color: #666">2 min ago</small>

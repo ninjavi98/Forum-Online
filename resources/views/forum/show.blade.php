@@ -27,7 +27,7 @@
                       </div>
                     <a href="#" class="badge badge-success">telukcoding</a> |
                     <small>{{$forums->created_at->diffForHumans()}}</small> |
-                    <small>0 Views</small> |
+                    <small>{{views($forums)->count()}} Views</small> |
                     <small>{{$forums->comments->count()}} Comments</small> |
                     @foreach($forums->tags as $tag)
                     <div class="badge badge-success">#{{$tag->name}}</div>

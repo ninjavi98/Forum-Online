@@ -163,6 +163,13 @@
               <div class="open_comment">
                   <div class="h1"><h4>Add a Comment</h4></div>
               </div>
+              @if (Auth::guest())
+
+              <div class="comment-show" style="padding: 60px;">
+                  <a href="{{route('login')}}" style="color: #ff0000"><i class="fa fa-sign-in"></i> Login </a>to comment.
+              </div>
+
+              @else
               <div class="comment-show">
                 <form action="{{route('addComment', $forums->id)}}" method="post">
                   {{csrf_field()}}
@@ -175,6 +182,8 @@
                 </div>
               </form>
               </div>
+              
+              @endif
             </div>
               </div>
             </div>

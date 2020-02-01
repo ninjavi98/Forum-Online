@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tag;
+use DB;
 
 class TagController extends Controller
 {
@@ -14,7 +15,15 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $populars = DB::table('forums')
+                    ->join('views', 'forums.id', '=', 'views.viewable_id')
+                    ->select(DB::raw('count(viewable_id) as count'), 'forums.id', 'forums.title', 'forums.slug')
+                    ->groupBy('id', 'title', 'slug')
+                    ->orderBy('count', 'desc')
+                    ->take(5)
+                    ->get();
+        $tags = Tag::all();
+        return view('tag.index', compact('tags','populars'));
     }
 
     /**

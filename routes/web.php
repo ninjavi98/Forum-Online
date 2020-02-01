@@ -30,3 +30,5 @@ Route::post('/comment/replyComment/{comment}', 'CommentController@replyComment')
 Route::get('/populars', 'ForumController@populars')->name('populars');
 
 Route::get('/user/{user}', 'ProfileController@index')->name('profile');
+
+Route::resource('/tag', 'TagController');

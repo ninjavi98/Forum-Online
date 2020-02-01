@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style=" background-color: #2ab27b;">
             <div class="container" id="nav_ul">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ __('BuffeOverflow') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,6 +35,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto" id="nav_ul">
                     <li><a class="nav-link" href="{{ route('forum.index') }}">{{ __('Forum') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('tag.index') }}">{{ __('Tag') }}</a></li>
 
                    </ul> 
                     <!-- Right Side Of Navbar -->

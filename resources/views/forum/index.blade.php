@@ -20,6 +20,7 @@
                        <div class="card-header" style="background-color: #2ab27b;padding: 6px 11px 6px 23px;">
                           <div class="menu_a" style="float: left;">
                           <a href="{{route('populars')}}">Populer</a> 
+                          <a href="{{route('tag.index')}}">Tag</a> 
                           </div>
                           <div class="search" style="margin: 3px;">
                           <div class="col-md-4 float-right" style="    padding-right: 0;">

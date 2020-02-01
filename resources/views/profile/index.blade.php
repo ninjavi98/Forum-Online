@@ -52,9 +52,9 @@
                 <td>{{$forum->title}}.., <i style="font-size: 10px; color: #999;"> {{$forum->created_at->diffForHumans()}}, {{$forum->comments->count()}} Comments, {{views($forum)->count()}} Views</i>
                  </td>
                  @if(auth()->user()->id == $forum->user_id)
-                <td width="10"><a href="#" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a></td>
+                <td width="10"><a href="{{route('forum.edit', $forum->slug)}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a></td>
                 <td width="10"> 
-                <form action="#" method="post" style="margin: 0;">
+                <form action="{{route('forum.destroy', $forum->id)}}" method="post" style="margin: 0;">
                  {{csrf_field()}}
                   {{method_field('DELETE')}}
                   <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</button>

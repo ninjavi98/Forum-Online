@@ -61,16 +61,8 @@
                  
               </div>
                 <div class="col-md-4"> <br>
-               <div class="card">
-                <div class="card-header" style="background: #2ab27b; color: #fff; padding: 8px 1.25rem;">Popular</div>
-                <div class="list-group">
-                 <a href="#" class="list-group-item" id="index_hover">What is Lorem Ipsum?
-                 <a href="#" class="list-group-item" id="index_hover">Where does it come from?
-
-                </a> 
-                </div>
-                </div>
-                </div>
+                <a href="{{route('forum.create')}}" class="btn btn-success btn-block">Buat Pertanyaan</a><br>
+               @include('layouts.popular')
                 </div>
                 <hr style="margin-top: 0;"> 
                 <div class="card">

@@ -6,6 +6,7 @@ use App\forum;
 use App\Tag;
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 
 class ForumController extends Controller
 {
@@ -20,8 +21,16 @@ class ForumController extends Controller
      */
     public function index()
     {
+        $populars = DB::table('forums')
+                    ->join('views', 'forums.id', '=', 'views.viewable_id')
+                    ->select(DB::raw('count(viewable_id) as count'), 'forums.id', 'forums.title', 'forums.slug')
+                    ->groupBy('id', 'title', 'slug')
+                    ->orderBy('count', 'desc')
+                    ->take(5)
+                    ->get();
+
         $forums = Forum::paginate(3);
-        return view('forum.index', compact('forums'));
+        return view('forum.index', compact('forums', 'populars'));
     }
 
     /**
@@ -77,14 +86,20 @@ class ForumController extends Controller
      */
     public function show($slug)
     {
-        
+        $populars = DB::table('forums')
+                    ->join('views', 'forums.id', '=', 'views.viewable_id')
+                    ->select(DB::raw('count(viewable_id) as count'), 'forums.id', 'forums.title', 'forums.slug')
+                    ->groupBy('id', 'title', 'slug')
+                    ->orderBy('count', 'desc')
+                    ->take(5)
+                    ->get();
 
         $forums = Forum::where('id', $slug)
                         ->orwhere('slug', $slug)
                         ->firstOrFail();
 
         views($forums)->record();
-        return view('forum.show', compact('forums'));
+        return view('forum.show', compact('forums', 'populars'));
     }
 
     /**

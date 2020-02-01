@@ -7,6 +7,7 @@ use App\Tag;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use Storage;
 
 class ForumController extends Controller
 {
@@ -123,10 +124,12 @@ class ForumController extends Controller
      * @param  \App\forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         $tags = Tag::all();
-        $forum = Forum::find($id);
+        $forum = Forum::where('id', $slug)
+                        ->orwhere('slug', $slug)
+                        ->firstOrFail();
         return view('forum.edit', compact('forum','tags'));
     }
 
@@ -175,8 +178,12 @@ class ForumController extends Controller
      * @param  \App\forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function destroy(forum $forum)
+    public function destroy($id)
     {
-        //
+        $forum = Forum::find($id);
+        Storage::delete($forum->image);
+        $forum->tags()->detach();
+        $forum->delete();
+        return back()->withInfo('Pertanyaan berhasil dihapus.');
     }
 }

@@ -5,7 +5,7 @@
   <div class="jumbotron" id="tc_jumbotron">
     <div class="card-body" id="xx" style="color: #fff; border:1px solid #fff;">
         <div class="text-center"> 
-           <h1 style="font-size: 3.5rem;">Populars</h1> 
+           <h1 style="font-size: 3.5rem;">Populer</h1> 
           <p>Jadikan dirimu kekinian dengan membaca thread yang paling populer.</p>  
       </div>
     </div> 

@@ -50,7 +50,7 @@
                 <td width="453">
                 <div class="forum_title">
                 <h4> <a href="{{route('forumslug', $forum->slug)}}">{{ str_limit($forum->title, 30)}}</a></h4>
-                <p>{{ str_limit($forum->description, 50)}}</p> 
+                <p>{!! strip_tags(str_limit($forum->description, 50) ) !!}</p> 
                 @foreach($forum->tags as $tag)
                 <a href="#" class="badge badge-success tag_label">#{{$tag->name}}</a>
                 @endforeach

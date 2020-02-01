@@ -46,10 +46,12 @@
           <div class="row">
            <div class="col-md-12">
             <table class="table table-bordered"> 
-            <tbody>   
+            <tbody>  
+              @forelse($forums as $forum) 
                <tr> 
-                <td>Title disini.., <i style="font-size: 10px; color: #999;"> 2 min ago, 2 Comments, 2 Views</i>
+                <td>{{$forum->title}}.., <i style="font-size: 10px; color: #999;"> {{$forum->created_at->diffForHumans()}}, {{$forum->comments->count()}} Comments, {{views($forum)->count()}} Views</i>
                  </td>
+                 @if(auth()->user()->id == $forum->user_id)
                 <td width="10"><a href="#" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a></td>
                 <td width="10"> 
                 <form action="#" method="post" style="margin: 0;">
@@ -58,8 +60,15 @@
                   <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</button>
                  </form> 
                 </td>  
-                <td width="10"><a href="#" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> View</a></td>
+                @endif
+                <td width="10"><a href="{{route('forumslug', $forum->slug)}}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> View</a></td>
               </tr> 
+              @empty
+              <br>
+              <div class="text-center">
+              No threads found.
+              </div>
+              @endforelse
               </tbody>
                   </table>
                    </div> 

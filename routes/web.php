@@ -28,3 +28,5 @@ Route::post('/comment/addComment/{forum}', 'CommentController@addComment')->name
 Route::post('/comment/replyComment/{comment}', 'CommentController@replyComment')->name('replyComment');
 
 Route::get('/populars', 'ForumController@populars')->name('populars');
+
+Route::get('/user/{user}', 'ProfileController@index')->name('profile');

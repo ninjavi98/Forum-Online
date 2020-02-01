@@ -12,13 +12,28 @@ class ForumController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index', 'show');
+        $this->middleware('auth')->except('index', 'show', 'populars');
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function populars()
+    {
+        $populars = DB::table('forums')
+                    ->join('views', 'forums.id', '=', 'views.viewable_id')
+                    ->select(DB::raw('count(viewable_id) as count'), 'forums.id', 'forums.title', 'forums.slug')
+                    ->groupBy('id', 'title', 'slug')
+                    ->orderBy('count', 'desc')
+                    ->take(5)
+                    ->get();
+
+        return view('forum.populars', compact('populars'));
+    }
+
+
     public function index()
     {
         $populars = DB::table('forums')

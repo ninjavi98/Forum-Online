@@ -128,7 +128,7 @@
               </div> <br>
               @empty
 
-              <p>No Comment</p>
+              <p>No Reply</p>
 
             @endforelse
 

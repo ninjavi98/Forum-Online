@@ -20,7 +20,7 @@
               </div> <hr style="margin-bottom: 5px">
             <p>Hanya project kuliah yang dikerjakan oleh mahasiswa yang masih noob dalam permasalahan coding. </p>
             <div class="footer_sosial">
-               <a href=""><i class="fa fa-github"></i></a>
+               <a href="https://github.com/ninjavi98/Forum-Online"><i class="fa fa-github"></i></a>
                <a href=""><i class="fa fa-twitter"></i></a>
                <a href=""><i class="fa fa-google-plus"></i></a>
             </div>

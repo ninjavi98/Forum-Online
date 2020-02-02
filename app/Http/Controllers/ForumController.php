@@ -45,7 +45,7 @@ class ForumController extends Controller
                     ->take(5)
                     ->get();
 
-        $forums = Forum::paginate(3);
+        $forums = Forum::paginate(5);
         return view('forum.index', compact('forums', 'populars'));
     }
 

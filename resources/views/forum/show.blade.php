@@ -25,7 +25,7 @@
                       <a href="#">  <i class="fa fa-twitter"></i></a>
                       <a href="#">  <i class="fa fa-google-plus"></i></a>
                       </div>
-                    <a href="#" class="badge badge-success">telukcoding</a> |
+                    <a href="#" class="badge badge-success">{{$forums->user->name}}</a> |
                     <small>{{$forums->created_at->diffForHumans()}}</small> |
                     <small>{{views($forums)->count()}} Views</small> |
                     <small>{{$forums->comments->count()}} Comments</small> |

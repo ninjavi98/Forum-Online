@@ -73,7 +73,7 @@
             </div>
             <br>
             <div class="create_info" style="color: #fff;"> 
-              <span><i class="fa fa-info-circle"></i> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500.</span> 
+              <span><i class="fa fa-info-circle"></i> Demi keamanan akun Anda, pastikan password anda lebih dari 8 karakter.</span> 
             </div> 
         </div>
        </div>
